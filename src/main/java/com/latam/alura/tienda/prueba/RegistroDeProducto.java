@@ -2,7 +2,6 @@ package com.latam.alura.tienda.prueba;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -21,7 +20,10 @@ public class RegistroDeProducto {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("tienda");
 		EntityManager em = factory.createEntityManager();
 		
+		em.getTransaction().begin();
 		em.persist(celular);
+		em.getTransaction().commit();
+		em.close();
 
 	}
 
