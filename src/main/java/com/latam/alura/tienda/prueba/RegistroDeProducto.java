@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.latam.alura.tienda.dao.ProductoDao;
+import com.latam.alura.tienda.modelo.Categoria;
 import com.latam.alura.tienda.modelo.Producto;
 import com.latam.alura.tienda.utils.JPAUtils;
 
@@ -14,13 +15,10 @@ public class RegistroDeProducto {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Producto celular = new Producto();
-		celular.setNombre("Samsung");
-		celular.setDescripcion("Telefono usado");
-		celular.setPrecio(new BigDecimal("1000"));
+		Producto celular = new Producto("Samsung", "telefono usado", new BigDecimal("1000"), Categoria.CELULARES);
 		
 		EntityManager em = JPAUtils.getEntityManager();
-		EntityManager em = factory.createEntityManager();
+		//EntityManager em = factory.createEntityManager();
 		
 		ProductoDao productoDao = new ProductoDao(em);
 		
