@@ -1,6 +1,7 @@
 package com.latam.alura.tienda.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 
@@ -26,6 +27,16 @@ public class ProductoDao {
 	public List<Producto> consultarTodos(){
 		String jqpl = "SELECT P FROM Producto AS P";
 		return em.createQuery(jqpl, Producto.class).getResultList();
+	}
+	
+	public List<Producto> consultarPorNombre(String nombre){
+		String jpql = "SELECT P FROM Producto AS P WHERE P.nombre=:nombre ";
+		return em.createQuery(jpql).setParameter("nombre", nombre).getResultList();
+	}
+	
+	public List<Producto> consultarPorNombreDeCategoria(String nombre){
+		String jpql = "SELECT P FROM Producto AS P WHERE P.categoria.nombre=:nombre ";
+		return em.createQuery(jpql).setParameter("nombre", nombre).getResultList();
 	}
 
 }

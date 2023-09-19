@@ -23,7 +23,7 @@ public class RegistroDeProducto {
         Producto producto = productoDao.consultarPorId(1l);
         System.out.println(producto.getNombre());
         
-        List<Producto> productos = productoDao.consultarTodos();
+        List<Producto> productos = productoDao.consultarPorNombreDeCategoria("CELULARES");
         productos.forEach(prod->System.out.println(prod.getDescripcion()));
     }
 
